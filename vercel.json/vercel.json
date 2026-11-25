@@ -1,0 +1,4 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "unzip -oq radio-brava.zip -d . && cp -R radio-brava/app radio-brava/components radio-brava/lib radio-brava/public . && npm run build"
+}
