@@ -86,6 +86,9 @@
     .tile-action:hover{background:#b9ed4a16;border-color:#b9ed4a70}
     .tile-action:disabled{color:#8d958d;cursor:not-allowed;background:#ffffff05;border-color:#ffffff12}
     .tile-action:disabled:hover{background:#ffffff05}
+    .favorite-toggle{display:block;width:100%;margin-top:6px;padding:8px 11px;border:1px solid transparent;border-radius:10px;background:transparent;color:#b9c0b8;text-align:left;font-size:10px;font-weight:750;cursor:pointer}
+    .favorite-toggle:hover,.favorite-toggle[aria-pressed="true"]{background:#b9ed4a12;border-color:#b9ed4a48;color:var(--lime)}
+    .collection-empty{margin:0;color:#89928a;font-size:11px}
     .badge{position:absolute;left:12px;top:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:#090c0bc9;border:1px solid #ffffff26;border-radius:999px;padding:6px 9px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
     .badge .live-dot{width:6px;height:6px;box-shadow:none}
     .channels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
@@ -129,7 +132,7 @@
     <div class="wrap topbar">
       <a class="brand" href="#inicio" aria-label="BRAVA TV, início"><span class="brand-mark">B</span><span>BRAVA TV<small>STREAMING GRATUITO</small></span></a>
       <nav aria-label="Menu principal">
-        <a href="#ao-vivo">Ao vivo</a><a href="#youtube">YouTube ao vivo</a><a href="#filmes">Filmes</a><a href="#series">Séries</a><a href="#doramas">Doramas</a><a href="#radio">Rádio</a>
+        <a href="#minha-lista">Minha lista</a><a href="#ao-vivo">Ao vivo</a><a href="#youtube">YouTube ao vivo</a><a href="#filmes">Filmes</a><a href="#series">Séries</a><a href="#doramas">Doramas</a><a href="#radio">Rádio</a>
       </nav>
       <div class="tools">
         <label class="searchbox" aria-label="Buscar no catálogo"><span aria-hidden="true">⌕</span><input id="busca" type="search" placeholder="Buscar título" autocomplete="off"></label>
@@ -147,7 +150,7 @@
           <h1 id="hero-title">Uma tela.<br>Mil histórias.</h1>
           <p>BRAVA TV reúne canais ao vivo, jornalismo, esporte, clássicos e nostalgia em fileiras para explorar. Escolha um título e assista aqui mesmo.</p>
           <div class="hero-actions">
-            <button class="btn btn-primary" type="button" data-play="youtube" data-title="The Covered Wagon · faroeste clássico" data-src="https://www.youtube-nocookie.com/embed/1bQeP8lSspg?autoplay=1&rel=0">▶ Assistir destaque</button>
+            <button class="btn btn-primary" type="button" data-play="youtube" data-id="the-covered-wagon" data-title="The Covered Wagon · faroeste clássico" data-src="https://www.youtube-nocookie.com/embed/1bQeP8lSspg?autoplay=1&rel=0">▶ Assistir destaque</button>
             <a class="btn btn-glass" href="#ao-vivo">◉ Explorar canais</a>
           </div>
           <p class="hero-note">Reprodução por players oficiais. A disponibilidade pode variar por canal e país.</p>
@@ -157,6 +160,17 @@
           <div class="art-title"><small>Faroeste · cinema mudo</small><b>The Covered<br>Wagon</b></div>
         </div>
       </div>
+    </section>
+
+    <section class="wrap section" id="minha-lista">
+      <div class="section-head"><div><h2 class="section-title">♡ Minha lista</h2><p class="section-sub">Seus favoritos ficam salvos neste aparelho.</p></div><span class="view-hint">Toque em ♡ em qualquer título</span></div>
+      <div class="rail" id="favoritesRail" aria-label="Títulos favoritos"></div>
+      <p class="collection-empty" id="favoritesEmpty">Sua lista começa quando você salvar seu primeiro título.</p>
+    </section>
+
+    <section class="wrap section" id="vistos-recentemente" hidden>
+      <div class="section-head"><div><h2 class="section-title">Assistidos recentemente</h2><p class="section-sub">Vídeos abertos por último neste aparelho.</p></div></div>
+      <div class="rail" id="recentRail" aria-label="Vídeos abertos recentemente"></div>
     </section>
 
     <section class="wrap section" id="ao-vivo">
@@ -216,11 +230,11 @@
     <section class="wrap section" id="filmes">
       <div class="section-head"><div><h2 class="section-title">Filmes para rever</h2><p class="section-sub">Clássicos com reprodução integrada no player do título.</p></div><span class="view-hint">Escolha o cartaz para abrir o player →</span></div>
       <div class="rail">
-        <article class="tile searchable" data-search="the covered wagon carroção faroeste western clássico filme mudo domínio público 1923">
+        <article class="tile searchable" data-id="the-covered-wagon" data-search="the covered wagon carroção faroeste western clássico filme mudo domínio público 1923">
           <div class="poster" style="--art:linear-gradient(150deg,#385033,#a58b4f 51%,#634a31)"><span class="badge">Faroeste clássico</span><span class="poster-code">1923</span><div class="poster-title"><small>Cinema mudo · aventura</small><b>The Covered Wagon</b><em>Uma travessia pelo Oeste americano</em></div></div>
           <div class="tile-info"><h3>The Covered Wagon</h3><span>1923</span></div><button class="tile-action" type="button" data-play="youtube" data-title="The Covered Wagon (1923) · clássico de faroeste" data-src="https://www.youtube-nocookie.com/embed/1bQeP8lSspg?autoplay=1&rel=0">▶ Assistir filme</button>
         </article>
-        <article class="tile searchable" data-search="mazzaropi o puritano da rua augusta cinema brasileiro museu">
+        <article class="tile searchable" data-id="mazzaropi" data-search="mazzaropi o puritano da rua augusta cinema brasileiro museu">
           <div class="poster" style="--art:linear-gradient(145deg,#51422a,#a17d44 55%,#403521)"><span class="badge">Acervo Mazzaropi</span><span class="poster-code">BR</span><div class="poster-title"><small>Cinema brasileiro</small><b>Mazzaropi</b><em>O Puritano da Rua Augusta · vídeo oficial</em></div></div>
           <div class="tile-info"><h3>Mazzaropi</h3><span>Acervo oficial</span></div><button class="tile-action" type="button" data-play="youtube" data-title="Mazzaropi · conteúdo oficial do Museu Mazzaropi" data-src="https://www.youtube-nocookie.com/embed/IOlFOPfDgJo?autoplay=1&rel=0">▶ Assistir no player</button>
         </article>
@@ -269,7 +283,7 @@
       <div class="rail">
         <article class="tile wide searchable" data-search="rádio mec música clássica jazz cultura ebc">
           <div class="poster" style="--art:linear-gradient(140deg,#253629,#6b8747 55%,#baa05b)"><span class="badge">Rádio pública</span><span class="poster-code">♫</span><div class="poster-title"><small>EBC · cultura</small><b>Rádio MEC</b><em>Música, concerto e programação cultural</em></div></div>
-          <div class="tile-info"><h3>Rádio MEC</h3><span>Ao vivo</span></div><button class="tile-action" type="button" disabled>Player incorporável em preparação</button>
+          <div class="tile-info"><h3>Rádio MEC</h3><span>Ao vivo</span></div><button class="tile-action" type="button" data-play="youtube" data-title="Rádio MEC · transmissão oficial ao vivo quando disponível" data-src="https://www.youtube-nocookie.com/embed/live_stream?channel=UC5twASaHR7MMtrRWr32_AHQ&amp;autoplay=1">▶ Ouvir no player</button>
         </article>
         <article class="tile wide searchable" data-search="rádio senado notícias ao vivo">
           <div class="poster" style="--art:linear-gradient(140deg,#28324f,#4c6394 55%,#8c7654)"><span class="badge">Rádio pública</span><span class="poster-code">♫</span><div class="poster-title"><small>Notícias · Brasil</small><b>Rádio Senado</b><em>Entrevistas e cobertura parlamentar</em></div></div>
@@ -283,6 +297,10 @@
     </section>
   </main>
 
+  <footer>
+    <div class="wrap footer-row"><span><b>BRAVA TV</b> · entretenimento gratuito com players oficiais.</span><span>Favoritos e histórico ficam somente neste aparelho.</span></div>
+  </footer>
+
   <dialog id="player" aria-labelledby="playerTitle">
     <div class="player-top"><div class="player-meta"><b id="playerTitle">Reproduzindo na BRAVA TV</b><small id="playerSub">Player oficial incorporado</small></div><button class="close-player" id="closePlayer" type="button" aria-label="Fechar player">×</button></div>
     <div class="player-frame" id="playerFrame"></div>
@@ -291,60 +309,32 @@
 
   <script>
     (function(){
-      var search=document.getElementById("busca");
-      var cards=Array.prototype.slice.call(document.querySelectorAll(".searchable"));
-      var sections=Array.prototype.slice.call(document.querySelectorAll("main .section"));
-      var dialog=document.getElementById("player");
-      var frame=document.getElementById("playerFrame");
-      var playerTitle=document.getElementById("playerTitle");
-      var playerSub=document.getElementById("playerSub");
-      function filter(){
-        var term=(search.value||"").trim().toLocaleLowerCase("pt-BR");
-        cards.forEach(function(card){card.hidden=!!term&&!(card.innerText+" "+(card.getAttribute("data-search")||"")).toLocaleLowerCase("pt-BR").includes(term);});
-        sections.forEach(function(section){
-          var items=section.querySelectorAll(".searchable");
-          if(!items.length)return;
-          var visible=Array.prototype.some.call(items,function(item){return !item.hidden;});
-          section.hidden=!!term&&!visible;
-        });
-      }
-      search.addEventListener("input",filter);
-      document.querySelectorAll("[data-play]").forEach(function(button){
-        button.addEventListener("click",function(){
-          var src=button.getAttribute("data-src");
-          if(!src)return;
-          var title=button.getAttribute("data-title")||"Reproduzindo na BRAVA TV";
-          playerTitle.textContent=title;
-          playerSub.textContent=button.getAttribute("data-play")==="youtube"?"Player oficial do YouTube":"Player oficial da emissora";
-          var iframe=document.createElement("iframe");
-          iframe.src=src;
-          iframe.title=title;
-          iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-          iframe.allowFullscreen=true;
-          iframe.referrerPolicy="strict-origin-when-cross-origin";
-          frame.replaceChildren(iframe);
-          if(typeof dialog.showModal==="function")dialog.showModal();else dialog.setAttribute("open","");
-        });
-      });
+      var search=document.getElementById("busca"),dialog=document.getElementById("player"),frame=document.getElementById("playerFrame");
+      var playerTitle=document.getElementById("playerTitle"),playerSub=document.getElementById("playerSub");
+      var favoritesRail=document.getElementById("favoritesRail"),recentRail=document.getElementById("recentRail");
+      var favoritesEmpty=document.getElementById("favoritesEmpty"),recentSection=document.getElementById("vistos-recentemente");
+      var favoriteKey="brava-tv-online:v1:favorites",recentKey="brava-tv-online:v1:recent";
+      var sourceCards=Array.prototype.slice.call(document.querySelectorAll(".tile.searchable")),sourceById=new Map();
+      function slug(value){return value.toLocaleLowerCase("pt-BR").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+      sourceCards.forEach(function(card){var title=card.querySelector(".tile-info h3"),id=card.getAttribute("data-id")||(title?slug(title.textContent.trim()):"");if(id){card.setAttribute("data-id",id);sourceById.set(id,card);}});
+      function readList(key){try{var value=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(value)?value.filter(function(x){return typeof x==="string";}):[];}catch(error){return [];}}
+      function writeList(key,value){try{localStorage.setItem(key,JSON.stringify(value));}catch(error){}}
+      var favorites=new Set(readList(favoriteKey)),recent=readList(recentKey).filter(function(id){return sourceById.has(id);}).slice(0,8);
+      function updateFavoriteButtons(){document.querySelectorAll(".favorite-toggle").forEach(function(button){var active=favorites.has(button.getAttribute("data-favorite"));button.setAttribute("aria-pressed",active?"true":"false");button.textContent=active?"♥ Na minha lista":"♡ Minha lista";});}
+      function renderCopies(ids,target){target.replaceChildren();ids.forEach(function(id){var source=sourceById.get(id);if(!source)return;var copy=source.cloneNode(true);copy.hidden=false;copy.classList.add("collection-copy");target.appendChild(copy);});}
+      function renderCollections(){var ids=Array.from(favorites).filter(function(id){return sourceById.has(id);});renderCopies(ids,favoritesRail);favoritesEmpty.hidden=ids.length>0;renderCopies(recent,recentRail);recentSection.hidden=recent.length===0;updateFavoriteButtons();}
+      sourceCards.forEach(function(card){if(card.querySelector(".favorite-toggle"))return;var title=card.querySelector(".tile-info h3"),id=card.getAttribute("data-id"),play=card.querySelector(".tile-action");if(!id||!play)return;var button=document.createElement("button");button.type="button";button.className="favorite-toggle";button.setAttribute("data-favorite",id);button.setAttribute("aria-pressed",favorites.has(id)?"true":"false");button.setAttribute("aria-label","Salvar "+(title?title.textContent.trim():"título")+" na Minha Lista");play.insertAdjacentElement("afterend",button);});
+      function applySearch(){var term=(search.value||"").trim().toLocaleLowerCase("pt-BR");document.querySelectorAll(".searchable").forEach(function(card){card.hidden=!!term&&!(card.innerText+" "+(card.getAttribute("data-search")||"")).toLocaleLowerCase("pt-BR").includes(term);});document.querySelectorAll("main .section").forEach(function(section){var items=section.querySelectorAll(".searchable");if(section.id==="minha-lista"||section.id==="vistos-recentemente"){section.hidden=!!term&&!Array.prototype.some.call(items,function(item){return !item.hidden;});return;}if(items.length)section.hidden=!!term&&!Array.prototype.some.call(items,function(item){return !item.hidden;});});}
+      function remember(id){if(!id||!sourceById.has(id))return;recent=[id].concat(recent.filter(function(saved){return saved!==id;})).slice(0,8);writeList(recentKey,recent);renderCollections();applySearch();}
+      function openPlayer(button){var src=button.getAttribute("data-src");if(!src)return;var card=button.closest(".tile"),id=button.getAttribute("data-id")||(card&&card.getAttribute("data-id"));remember(id);var title=button.getAttribute("data-title")||"Reproduzindo na BRAVA TV";playerTitle.textContent=title;playerSub.textContent=button.getAttribute("data-play")==="youtube"?"Player oficial do YouTube":"Player oficial da emissora";var iframe=document.createElement("iframe");iframe.src=src.replace(/&amp;/g,"&");iframe.title=title;iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";iframe.allowFullscreen=true;iframe.referrerPolicy="strict-origin-when-cross-origin";frame.replaceChildren(iframe);if(typeof dialog.showModal==="function")dialog.showModal();else dialog.setAttribute("open","");}
+      document.addEventListener("click",function(event){var fav=event.target.closest(".favorite-toggle");if(fav){var id=fav.getAttribute("data-favorite");if(favorites.has(id))favorites.delete(id);else favorites.add(id);writeList(favoriteKey,Array.from(favorites));renderCollections();applySearch();return;}var play=event.target.closest("[data-play]");if(play)openPlayer(play);});
+      search.addEventListener("input",applySearch);
       function closePlayer(){frame.replaceChildren();if(dialog.open)dialog.close();else dialog.removeAttribute("open");}
-      document.getElementById("closePlayer").addEventListener("click",closePlayer);
-      dialog.addEventListener("click",function(event){if(event.target===dialog)closePlayer();});
-      dialog.addEventListener("close",function(){frame.replaceChildren();});
-      document.addEventListener("keydown",function(event){if(event.key==="Escape"&&dialog.open)closePlayer();});
-      var voiceButton=document.getElementById("voiceSearch");
-      var voiceStatus=document.getElementById("voiceStatus");
-      var Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-      if(Recognition){
-        var recognition=new Recognition(),listening=false;
-        recognition.lang="pt-BR";recognition.interimResults=false;recognition.maxAlternatives=1;
-        recognition.onstart=function(){listening=true;voiceButton.classList.add("listening");voiceButton.setAttribute("aria-pressed","true");voiceStatus.textContent="Ouvindo… diga o título ou canal.";};
-        recognition.onresult=function(event){search.value=event.results[0][0].transcript;filter();voiceStatus.textContent="Busca por voz: "+search.value;};
-        recognition.onerror=function(event){voiceStatus.textContent=event.error==="not-allowed"||event.error==="service-not-allowed"?"Permita o microfone nas configurações do navegador.":"Não consegui reconhecer a fala. Tente novamente.";};
-        recognition.onend=function(){listening=false;voiceButton.classList.remove("listening");voiceButton.setAttribute("aria-pressed","false");if(voiceStatus.textContent.indexOf("Ouvindo")===0)voiceStatus.textContent="Nenhuma fala reconhecida.";};
-        voiceButton.addEventListener("click",function(){if(listening){recognition.stop();return;}voiceStatus.textContent="";try{recognition.start();}catch(error){voiceStatus.textContent="A pesquisa por voz já está em andamento.";}});
-      }else{
-        voiceButton.addEventListener("click",function(){voiceStatus.textContent="Busca por voz não disponível neste navegador.";});
-      }
+      document.getElementById("closePlayer").addEventListener("click",closePlayer);dialog.addEventListener("click",function(event){if(event.target===dialog)closePlayer();});dialog.addEventListener("close",function(){frame.replaceChildren();});
+      document.addEventListener("keydown",function(event){if(event.key==="Escape"&&dialog.open){closePlayer();return;}if(event.key!=="ArrowLeft"&&event.key!=="ArrowRight")return;var tile=event.target.closest&&event.target.closest(".tile");if(!tile||event.target.matches("input,textarea"))return;var rail=tile.closest(".rail");if(!rail)return;var tiles=Array.prototype.slice.call(rail.querySelectorAll(".tile:not([hidden])")),index=tiles.indexOf(tile),step=event.key==="ArrowRight"?1:-1,next=index+step;while(next>=0&&next<tiles.length){var target=tiles[next].querySelector(".tile-action:not(:disabled),.favorite-toggle");if(target){event.preventDefault();target.focus();break;}next+=step;}});
+      var voiceButton=document.getElementById("voiceSearch"),voiceStatus=document.getElementById("voiceStatus"),Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+      if(Recognition){var recognition=new Recognition(),listening=false;recognition.lang="pt-BR";recognition.interimResults=false;recognition.maxAlternatives=1;recognition.onstart=function(){listening=true;voiceButton.classList.add("listening");voiceButton.setAttribute("aria-pressed","true");voiceStatus.textContent="Ouvindo… diga o título ou canal.";};recognition.onresult=function(event){search.value=event.results[0][0].transcript;applySearch();voiceStatus.textContent="Busca por voz: "+search.value;};recognition.onerror=function(event){voiceStatus.textContent=event.error==="not-allowed"||event.error==="service-not-allowed"?"Permita o microfone nas configurações do navegador.":"Não consegui reconhecer a fala. Tente novamente.";};recognition.onend=function(){listening=false;voiceButton.classList.remove("listening");voiceButton.setAttribute("aria-pressed","false");if(voiceStatus.textContent.indexOf("Ouvindo")===0)voiceStatus.textContent="Nenhuma fala reconhecida.";};voiceButton.addEventListener("click",function(){if(listening){recognition.stop();return;}voiceStatus.textContent="";try{recognition.start();}catch(error){voiceStatus.textContent="A pesquisa por voz já está em andamento.";}});}else{voiceButton.addEventListener("click",function(){voiceStatus.textContent="Busca por voz não disponível neste navegador.";});}
+      renderCollections();
     }());
   </script>
 </body>
