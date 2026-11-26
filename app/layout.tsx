@@ -5,9 +5,9 @@ import Player from "@/components/Player";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Rádio Brava",
-  description: "Rádios online gratuitas, sem anúncios e sem cadastro.",
-  applicationName: "Rádio Brava",
+  title: "BRAVA — Rádio e TV",
+  description: "Rádio online, canais oficiais, filmes e esportes da BRAVA em um só lugar.",
+  applicationName: "BRAVA",
   manifest: "/manifest.json",
   icons: {
     icon: "/icons/icon-192.png",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "Rádio Brava",
+    title: "BRAVA",
     statusBarStyle: "black-translucent",
   },
 };

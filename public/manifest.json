@@ -1,7 +1,7 @@
 {
-  "name": "Rádio Brava",
-  "short_name": "Rádio Brava",
-  "description": "Rádios online gratuitas, sem anúncios e sem cadastro.",
+  "name": "BRAVA — Rádio e TV",
+  "short_name": "BRAVA",
+  "description": "Rádio online, canais oficiais, filmes e esportes da BRAVA em um só lugar.",
   "id": "/",
   "start_url": "/",
   "scope": "/",
@@ -10,10 +10,29 @@
   "background_color": "#0b0b0f",
   "theme_color": "#fe5211",
   "lang": "pt-BR",
-  "categories": ["music", "entertainment"],
+  "categories": [
+    "music",
+    "entertainment",
+    "sports"
+  ],
   "icons": [
-    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
