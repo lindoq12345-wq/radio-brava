@@ -1,17 +1,16 @@
 # BRAVA TV Online
 
-Portal estático da BRAVA TV com canais ao vivo, lives oficiais do YouTube, filmes, séries, doramas, nostalgia, esportes, documentários e rádios.
+Experiência de streaming gratuita com guia de canais, jornalismo, clássicos, séries, doramas e rádio em fileiras navegáveis.
 
-## Conteúdo
+## Como funciona
 
-- Página única em `index.html`, com estilos, navegação, busca e microfone embutidos.
-- PineDrama, Sua Novela e Melolo abrem suas páginas oficiais ou lojas de aplicativos.
-- Os vídeos e transmissões abrem nos serviços oficiais; a disponibilidade pode mudar por região e horário.
+- Página estática em `index.html`, servida pelo Next.js em `/brava-tv-online/`.
+- Títulos reproduzíveis abrem em um player dentro da própria página.
+- A página usa o player oficial da TV Câmara e embeds do YouTube para transmissões e vídeos publicados pelos canais correspondentes.
+- Quando uma plataforma não oferece player web incorporável, o card informa isso e não redireciona para fora do site.
+- PineDrama, Sua Novela e Melolo aparecem como categorias, mas não reproduzem episódios enquanto não houver player web público autorizado.
+- A pesquisa por voz usa a API do navegador em português do Brasil quando disponível.
 
-## Pesquisa por voz
+## Hospedagem
 
-A busca usa a API de reconhecimento de fala do navegador em português do Brasil quando disponível. O navegador pode pedir permissão para acessar o microfone.
-
-## Vercel
-
-Publicada a partir do repositório Rádio Brava; a página fica em `/brava-tv-online/` no domínio do projeto.
+O diretório é publicado pelo projeto Rádio Brava na Vercel em `/brava-tv-online/`. O deploy de produção acontece pela branch principal.
