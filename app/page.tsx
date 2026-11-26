@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Heart, List, Loader2, Map as MapIcon, Shuffle } from "lucide-react";
 import { useMemo, useState } from "react";
 import Filters from "@/components/Filters";
@@ -99,6 +100,12 @@ export default function HomePage() {
           <ThemeToggle />
         </div>
       </header>
+
+      <nav className="mb-6 flex gap-2 overflow-x-auto pb-1" aria-label="Navegação BRAVA">
+        <Link href="/brava-tv-online" className="inline-flex h-10 shrink-0 items-center rounded-lg bg-brand-500 px-4 text-sm font-semibold text-white hover:opacity-90">
+          BRAVA TV · Filmes e esportes
+        </Link>
+      </nav>
 
       <div className="space-y-3">
         <SearchBar value={query} onChange={setQuery} />
