@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111411">
+  <meta name="description" content="BRAVA TV reúne filmes, séries, nostalgia, jornalismo, transmissões oficiais do YouTube, rádios online e canais públicos gratuitos.">
+  <title>BRAVA TV — entretenimento gratuito</title>
+  <style>
+    :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark;--bg:#111411;--panel:#1a1e19;--panel2:#20251e;--text:#f4f2eb;--muted:#a5a99e;--line:#ffffff16;--gold:#f0bb62;--mint:#a5cf9b;--max:1180px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;min-width:320px;background:radial-gradient(ellipse at 74% -18%,#38432b 0,transparent 35%),var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .skip{position:absolute;left:-10000px;top:10px;background:#fff;color:#111;padding:10px;z-index:20}.skip:focus{left:10px}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:auto}
+    header{position:sticky;top:0;z-index:10;background:#111411ed;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    .bar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+    .brand-mark{width:40px;height:34px;border:2px solid var(--gold);border-radius:10px;display:grid;place-items:center;color:var(--gold);font-size:15px;font-weight:900;position:relative}
+    .brand-mark:after{content:"";position:absolute;width:14px;height:2px;background:var(--gold);bottom:-6px;left:11px;border-radius:2px}
+    .brand-name{font-size:18px;font-weight:850;letter-spacing:.2px}.brand-name span{color:var(--gold)}
+    nav{display:flex;align-items:center;gap:6px}
+    nav a{padding:10px 12px;color:#c4c7bf;font-size:13px;border-radius:9px}
+    nav a:hover{background:#ffffff0b;color:#fff}
+    .header-cta,.button{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:10px;background:var(--gold);color:#21190c;font-weight:800;padding:11px 15px;font-size:13px}
+    .header-cta:hover,.button:hover{filter:brightness(1.07);transform:translateY(-1px)}
+    main{overflow:hidden}
+    .hero{padding:48px 0 30px}
+    .hero-box{position:relative;isolation:isolate;overflow:hidden;min-height:355px;border-radius:24px;border:1px solid #f0bb6233;background:linear-gradient(110deg,#20251e 0%,#20251e 52%,#312b1f 100%);display:grid;grid-template-columns:1.08fr .92fr;align-items:center}
+    .hero-box:before{content:"";position:absolute;z-index:-1;width:580px;height:580px;right:-25px;top:-230px;border-radius:50%;background:radial-gradient(circle,#e7a84d40 0,transparent 66%)}
+    .hero-copy{padding:36px 22px 38px 46px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px #f0bb62}
+    h1{font-size:clamp(36px,5vw,62px);line-height:.99;letter-spacing:-2.7px;margin:16px 0 14px;max-width:610px}
+    h1 em{color:var(--gold);font-style:normal}
+    .hero-copy p{max-width:500px;color:#c4c6bb;font-size:16px;line-height:1.65;margin:0 0 22px}
+    .hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .button.alt{background:#ffffff0b;border:1px solid #ffffff24;color:#f0f0e9}
+    .hero-note{margin-top:16px;color:#9ca297;font-size:12px}
+    .art{position:relative;min-height:330px;align-self:stretch;overflow:hidden}
+    .sun{position:absolute;width:185px;height:185px;border-radius:50%;right:25%;top:33px;background:linear-gradient(145deg,#f5cc75,#e48642);box-shadow:0 0 80px #e89e4b44}
+    .ridge{position:absolute;left:-5%;right:-3%;bottom:0;height:57%;background:#333c2b;clip-path:polygon(0 57%,19% 28%,35% 57%,51% 14%,69% 53%,86% 31%,100% 57%,100% 100%,0 100%)}
+    .ridge.back{bottom:23px;height:50%;background:#46513a;opacity:.55;clip-path:polygon(0 71%,20% 40%,38% 67%,60% 25%,78% 61%,100% 33%,100% 100%,0 100%)}
+    .mesa{position:absolute;left:-4%;right:-2%;bottom:-2px;height:32%;background:#80633d;clip-path:polygon(0 28%,26% 13%,43% 18%,60% 0,100% 27%,100% 100%,0 100%)}
+    .cactus{position:absolute;right:15%;bottom:18%;width:8px;height:57px;background:#8e9a68;border-radius:5px}
+    .cactus:before,.cactus:after{content:"";position:absolute;width:18px;height:25px;border:6px solid #8e9a68;border-bottom:0;border-radius:14px 14px 0 0}
+    .cactus:before{left:-17px;top:17px;transform:rotate(-8deg)}
+    .cactus:after{right:-16px;top:27px;height:19px;transform:rotate(8deg)}
+    .art-label{position:absolute;bottom:22px;left:27px;background:#171a15d9;border:1px solid #ffffff24;padding:10px 13px;border-radius:11px;font-size:11px;color:#e0dfd6}
+    .art-label b{color:var(--gold);display:block;font-size:13px;margin-bottom:3px}
+    .live-board{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(300px,84%);min-height:250px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;border:1px solid #f0bb6240;border-radius:22px;background:linear-gradient(145deg,#282d25,#121612);box-shadow:0 20px 70px #0008}
+    .live-board-pill{display:flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid #ff807044;border-radius:999px;background:#ff605014;color:#ffd6d0;font-size:10px;font-weight:850;letter-spacing:1px}
+    .live-board-pill i{width:7px;height:7px;border-radius:50%;background:#ff746b;box-shadow:0 0 12px #ff746b}
+    .live-board-screen{width:78px;height:78px;display:grid;place-items:center;padding-left:5px;border-radius:22px;background:var(--gold);color:#21190c;font-size:35px;box-shadow:0 8px 28px #f0bb6238}
+    .live-board-title{font-size:14px;font-weight:900;letter-spacing:1.4px;color:#f4f2eb}
+    .live-board-sub{color:#a5a99e;font-size:10px;letter-spacing:1.6px}
+    .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 0 40px}
+    .quick a{border:1px solid var(--line);background:#191d18;border-radius:15px;padding:16px;display:flex;align-items:center;gap:13px;transition:.18s}
+    .quick a:hover,.card:hover{transform:translateY(-3px);border-color:#f0bb6266}
+    .quick-icon{width:40px;height:40px;display:grid;place-items:center;background:#f0bb6216;color:var(--gold);border-radius:12px;font-size:19px}
+    .quick strong{display:block;font-size:14px;margin-bottom:3px}.quick small{color:var(--muted);font-size:12px}
+    .section{padding:15px 0 37px}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:17px}
+    .section-head h2{font-size:26px;letter-spacing:-.8px;margin:7px 0 0}
+    .section-head p{color:var(--muted);margin:0;font-size:14px;line-height:1.55;max-width:520px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .card{min-width:0;display:flex;flex-direction:column;border:1px solid var(--line);background:linear-gradient(145deg,#1c211b,#171a16);border-radius:17px;overflow:hidden;transition:.18s}
+    .card-top{height:118px;position:relative;display:flex;align-items:flex-end;padding:15px;background:linear-gradient(135deg,#465237,#20271e)}
+    .card-top.orange{background:linear-gradient(135deg,#795338,#32281d)}
+    .card-top.blue{background:linear-gradient(135deg,#38525a,#1d2829)}
+    .card-top.violet{background:linear-gradient(135deg,#57485c,#28222e)}
+    .card-top.teal{background:linear-gradient(135deg,#36534b,#1c2924)}
+    .card-top.gold{background:linear-gradient(135deg,#826a3b,#342b1a)}
+    .card-top:after{content:"";position:absolute;width:125px;height:125px;border:1px solid #ffffff28;border-radius:50%;right:-18px;top:-53px;box-shadow:0 0 0 18px #ffffff08,0 0 0 38px #ffffff05}
+    .poster-icon{position:relative;z-index:1;width:43px;height:43px;border:1px solid #ffffff40;background:#12150f66;border-radius:13px;display:grid;place-items:center;font-size:21px}
+    .free-badge{position:absolute;z-index:1;right:13px;bottom:16px;padding:5px 8px;border-radius:999px;background:#12150fc9;border:1px solid #ffffff2b;color:#d8f0c9;font-size:10px;font-weight:750}
+    .card-body{padding:15px;display:flex;flex-direction:column;flex:1}
+    .card-kicker{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gold);font-weight:800;margin-bottom:7px}
+    .card h3{font-size:17px;letter-spacing:-.25px;margin:0 0 8px}
+    .card p{font-size:13px;line-height:1.55;color:#b2b6ab;margin:0 0 16px}
+    .card-bottom{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .provider{font-size:11px;color:#a3a99b}
+    .open-link{font-size:12px;font-weight:800;color:#1e190e;background:var(--gold);padding:9px 12px;border-radius:9px;white-space:nowrap}
+    .open-link:hover{filter:brightness(1.08)}
+    .inline-link{font-size:13px;color:var(--gold);font-weight:700}
+    .watch-panel{margin:4px 0 42px;background:#191d18;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+    .watch-head{padding:19px 21px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .watch-head h3{font-size:18px;margin:0 0 5px}.watch-head p{font-size:12px;color:var(--muted);margin:0}
+    .live-pill{color:#f3a39c;border:1px solid #ff8a7d44;background:#ff655012;border-radius:999px;padding:7px 10px;font-size:10px;font-weight:850;letter-spacing:.5px;white-space:nowrap}
+    .embed{aspect-ratio:16/7;background:#080a08;border-top:1px solid var(--line)}
+    .embed iframe{display:block;width:100%;height:100%;border:0}
+    .watch-foot{padding:12px 18px;color:#a5aa9e;font-size:12px;line-height:1.5}
+    .search-panel{margin:6px 0 22px;padding:20px;border:1px solid var(--line);background:#181c17;border-radius:17px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .search-panel h2{font-size:18px;margin:0 0 5px}.search-panel p{font-size:12px;color:var(--muted);margin:0}
+    .search-wrap{position:relative;width:min(360px,100%)}
+    .search-wrap input{width:100%;border:1px solid #ffffff24;border-radius:11px;padding:12px 48px 12px 39px;color:#fff;background:#0f120f;font-size:14px}
+    .search-icon{position:absolute;left:14px;top:12px;color:#8f978a}
+    .voice-search{position:absolute;right:7px;top:6px;width:34px;height:34px;border:1px solid #ffffff24;border-radius:9px;background:#ffffff0b;color:var(--gold);font-size:16px;cursor:pointer}
+    .voice-search:hover{background:#f0bb6218}.voice-search.listening{background:#ff655019;border-color:#ff8a7d66;color:#ff9b92;animation:pulse 1.1s infinite}
+    .voice-status{display:block;margin:6px 3px 0;color:var(--muted);font-size:11px;line-height:1.4}.voice-status:empty{display:none}
+    @keyframes pulse{50%{box-shadow:0 0 0 4px #ff655018}}
+    .no-results{display:none;padding:24px;text-align:center;color:var(--muted);border:1px dashed #ffffff2e;border-radius:14px}
+    .notice{padding:18px 20px;border-left:3px solid var(--gold);background:#f0bb620d;border-radius:0 13px 13px 0;color:#c9c9bf;font-size:13px;line-height:1.7;margin:0 0 37px}
+    .notice strong{color:#f0d296}
+    footer{border-top:1px solid var(--line);padding:24px 0 34px;color:#959b8f;font-size:12px;line-height:1.7}
+    .footer-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    footer b{color:#eee9da}
+    [hidden]{display:none!important}
+    @media(max-width:860px){nav{gap:0}nav a{padding:9px 8px;font-size:12px}.header-cta{display:none}.hero-box{grid-template-columns:1fr .72fr}.hero-copy{padding-left:30px}.quick{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.embed{aspect-ratio:16/9}}
+    @media(max-width:620px){.wrap{width:min(calc(100% - 28px),var(--max))}.bar{height:auto;min-height:65px;flex-wrap:wrap;padding:12px 0 9px;gap:9px}.brand-mark{width:35px;height:31px}.brand-name{font-size:16px}nav{order:2;width:100%;overflow:auto;justify-content:flex-start}nav a{white-space:nowrap;padding:8px 10px}.hero{padding-top:22px}.hero-box{display:block;min-height:0}.hero-copy{padding:27px 22px 24px}.hero-copy p{font-size:15px}.art{min-height:175px}.live-board{width:min(280px,88%);min-height:145px;padding:9px 14px;display:grid;grid-template-columns:53px 1fr;grid-template-rows:auto auto auto;gap:4px 10px;justify-items:start}.live-board-pill{grid-column:2;grid-row:1}.live-board-screen{grid-column:1;grid-row:1/4;width:50px;height:50px;border-radius:15px;font-size:23px}.live-board-title{grid-column:2;grid-row:2;font-size:11px}.live-board-sub{grid-column:2;grid-row:3;font-size:9px}.quick{gap:9px;padding-bottom:29px}.quick a{padding:12px;gap:9px}.quick-icon{width:35px;height:35px}.quick strong{font-size:13px}.quick small{font-size:11px}.section{padding-bottom:26px}.section-head{display:block}.section-head p{margin-top:8px}.section-head h2{font-size:23px}.cards{grid-template-columns:1fr}.card-top{height:96px}.search-panel{padding:16px}.search-wrap{width:100%}.watch-head{align-items:flex-start}.embed{aspect-ratio:4/3}.footer-row{display:block}.footer-row>span{display:block;margin-top:7px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="#inicio" aria-label="BRAVA TV, início">
+        <span class="brand-mark" aria-hidden="true">B</span><span class="brand-name">BRAVA<span>TV</span></span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#tv">Canais ao vivo</a><a href="#jornalismo">YouTube ao vivo</a><a href="#filmes-series">Filmes e séries</a><a href="#nostalgia">Nostalgia</a><a href="#faroeste">Faroeste</a><a href="#esporte-docs">Esportes e docs</a><a href="#radio">Rádios</a>
+      </nav>
+      <a class="header-cta" href="#tv">Abrir canais</a>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section class="hero wrap" id="inicio">
+      <div class="hero-box">
+        <div class="hero-copy">
+          <span class="eyebrow">Canais e transmissões em destaque</span>
+          <h1>TV e YouTube<br><em>ao vivo agora.</em></h1>
+          <p>Abra canais brasileiros e lives oficiais do YouTube. Filmes, séries e clássicos gratuitos vêm logo abaixo.</p>
+          <div class="hero-actions">
+            <a class="button" href="#tv">Abrir canais ao vivo</a>
+            <a class="button alt" href="#jornalismo">Ver YouTube ao vivo</a>
+          </div>
+          <div class="hero-note">Links diretos para canais oficiais. Filmes e séries gratuitos mais abaixo.</div>
+        </div>
+        <div class="art" aria-hidden="true">
+          <div class="live-board"><span class="live-board-pill"><i></i> AO VIVO</span><div class="live-board-screen">▶</div><div class="live-board-title">CANAIS + YOUTUBE</div><div class="live-board-sub">ABRA EM UM CLIQUE</div></div>
+        </div>
+      </div>
+    </section>
+    <section class="wrap quick" aria-label="Acesso rápido">
+      <a href="#tv"><span class="quick-icon" aria-hidden="true">◉</span><span><strong>Canais ao vivo</strong><small>TV aberta e pública</small></span></a>
+      <a href="#jornalismo"><span class="quick-icon" aria-hidden="true">▶</span><span><strong>YouTube ao vivo</strong><small>Notícias, esportes e mais</small></span></a>
+      <a href="#filmes-series"><span class="quick-icon" aria-hidden="true">▣</span><span><strong>Filmes e séries</strong><small>Catálogos gratuitos</small></span></a>
+      <a href="#radio"><span class="quick-icon" aria-hidden="true">♫</span><span><strong>Rádios</strong><small>Ouça pela internet</small></span></a>
+    </section>
+    <section class="wrap section" id="tv">
+      <div class="section-head">
+        <div><span class="eyebrow">Programação pública</span><h2>TV ao vivo</h2></div>
+        <p>Canais e transmissões oficiais abertos na internet.</p>
+      </div>
+      <div class="watch-panel" data-search="tv camara ao vivo">
+        <div class="watch-head"><div><h3>TV Câmara ao vivo</h3><p>Transmissão oficial incorporada da Câmara dos Deputados.</p></div><span class="live-pill">TRANSMISSÃO OFICIAL</span></div>
+        <div class="embed"><iframe src="https://www2.camara.leg.br/camaranoticias/tv/embedAoVivo.html" title="TV Câmara ao vivo" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <div class="watch-foot">Se o player não carregar no seu navegador, abra a transmissão no site oficial da <a class="inline-link" href="https://www2.camara.leg.br/camaranoticias/tv/aoVivo.html" target="_blank" rel="noopener noreferrer">TV Câmara</a>.</div>
+      </div>
+      <div class="cards">
+        <article class="card searchable" data-search="tv brasil ao vivo webtv ebc canal público">
+          <div class="card-top blue"><span class="poster-icon" aria-hidden="true">TV</span><span class="free-badge">Ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Canal público</div><h3>TV Brasil</h3><p>Assista à WebTV oficial. Parte da programação pode ter restrição de direitos na internet.</p><div class="card-bottom"><span class="provider">EBC</span><a class="open-link" href="https://tvbrasil.ebc.com.br/webtv/" target="_blank" rel="noopener noreferrer">Assistir ao vivo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="tv senado ao vivo canal público">
+          <div class="card-top violet"><span class="poster-icon" aria-hidden="true">TV</span><span class="free-badge">Ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Canal legislativo</div><h3>TV Senado</h3><p>Acompanhe sessões, comissões e programas pelo sinal oficial da emissora.</p><div class="card-bottom"><span class="provider">Senado Federal</span><a class="open-link" href="https://www12.senado.leg.br/tv/programas/ao-vivo" target="_blank" rel="noopener noreferrer">Assistir ao vivo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="tv câmara ao vivo canal público deputados">
+          <div class="card-top teal"><span class="poster-icon" aria-hidden="true">TV</span><span class="free-badge">Ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Canal legislativo</div><h3>TV Câmara</h3><p>Transmissões e conteúdos oficiais da Câmara dos Deputados.</p><div class="card-bottom"><span class="provider">Câmara dos Deputados</span><a class="open-link" href="https://www2.camara.leg.br/camaranoticias/tv/aoVivo.html" target="_blank" rel="noopener noreferrer">Abrir canal</a></div></div>
+        </article>
+        <article class="card searchable" data-search="cazétv esportes futebol ao vivo esporte youtube grátis">
+          <div class="card-top orange"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">Esportes ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Eventos esportivos</div><h3>CazéTV</h3><p>Veja jogos e transmissões esportivas liberados para o Brasil no canal oficial.</p><div class="card-bottom"><span class="provider">YouTube oficial</span><a class="open-link" href="https://www.youtube.com/@CazeTV/live" target="_blank" rel="noopener noreferrer">Ver ao vivo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="tv cultura ao vivo cultura documentários música canal aberto">
+          <div class="card-top violet"><span class="poster-icon" aria-hidden="true">TV</span><span class="free-badge">Ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Canal aberto</div><h3>TV Cultura</h3><p>Programação cultural, jornalismo, música e programas para toda a família.</p><div class="card-bottom"><span class="provider">Fundação Padre Anchieta</span><a class="open-link" href="https://cultura.uol.com.br/aovivo/" target="_blank" rel="noopener noreferrer">Assistir ao vivo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="canal saúde fiocruz ao vivo documentários educação série">
+          <div class="card-top teal"><span class="poster-icon" aria-hidden="true">+</span><span class="free-badge">Ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Ciência e saúde</div><h3>Canal Saúde</h3><p>Programas, séries e documentários da Fiocruz; veja as opções oficiais de transmissão.</p><div class="card-bottom"><span class="provider">Fiocruz</span><a class="open-link" href="https://www.canalsaude.fiocruz.br/" target="_blank" rel="noopener noreferrer">Abrir canal</a></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="wrap section" id="jornalismo">
+      <div class="section-head">
+        <div><span class="eyebrow">Notícias e transmissões</span><h2>Jornalismo ao vivo no YouTube</h2></div>
+        <p>Atalhos para canais oficiais. A transmissão aparece quando a emissora estiver ao vivo; a programação muda ao longo do dia.</p>
+      </div>
+      <div class="cards">
+        <article class="card searchable" data-search="band jornalismo notícias ao vivo youtube política economia brasil">
+          <div class="card-top blue"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">YouTube ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Notícias e reportagens</div><h3>Band Jornalismo</h3><p>Notícias, entrevistas e transmissões jornalísticas no canal oficial da Band.</p><div class="card-bottom"><span class="provider">YouTube oficial</span><a class="open-link" href="https://www.youtube.com/@bandjornalismo/live" target="_blank" rel="noopener noreferrer">Abrir transmissão</a></div></div>
+        </article>
+        <article class="card searchable" data-search="sbt news notícias jornalismo 24 horas ao vivo youtube">
+          <div class="card-top violet"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">YouTube ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Notícias 24 horas</div><h3>SBT News</h3><p>Acompanhe a programação e as coberturas ao vivo do canal oficial de notícias.</p><div class="card-bottom"><span class="provider">YouTube oficial</span><a class="open-link" href="https://www.youtube.com/@sbtnews/live" target="_blank" rel="noopener noreferrer">Abrir transmissão</a></div></div>
+        </article>
+        <article class="card searchable" data-search="cnn brasil jornalismo notícias ao vivo youtube economia política">
+          <div class="card-top orange"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">YouTube ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Notícias e análise</div><h3>CNN Brasil</h3><p>Veja a página de lives do canal oficial e abra a transmissão disponível.</p><div class="card-bottom"><span class="provider">YouTube oficial</span><a class="open-link" href="https://www.youtube.com/@CNNBrasil/live" target="_blank" rel="noopener noreferrer">Abrir transmissão</a></div></div>
+        </article>
+        <article class="card searchable" data-search="canal gov notícias governo entrevistas ao vivo youtube brasil">
+          <div class="card-top teal"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">YouTube ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Comunicação pública</div><h3>Canal Gov</h3><p>Pronunciamentos, entrevistas e cobertura de atividades do Governo Federal.</p><div class="card-bottom"><span class="provider">Canal oficial</span><a class="open-link" href="https://www.youtube.com/@canalgov/live" target="_blank" rel="noopener noreferrer">Assistir ao vivo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="youtube ao vivo lives transmissões agora notícias esportes documentários shows">
+          <div class="card-top gold"><span class="poster-icon" aria-hidden="true">◉</span><span class="free-badge">Várias categorias</span></div>
+          <div class="card-body"><div class="card-kicker">Descobrir transmissões</div><h3>Lives no YouTube</h3><p>Explore transmissões públicas disponíveis agora, de notícias e esportes a música e eventos.</p><div class="card-bottom"><span class="provider">YouTube</span><a class="open-link" href="https://www.youtube.com/feed/live" target="_blank" rel="noopener noreferrer">Explorar lives</a></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="wrap search-panel" id="fontes">
+      <div><h2>O que você quer assistir?</h2><p>Pesquise por título ou toque no microfone para falar. O navegador pode pedir acesso ao microfone.</p></div>
+      <div class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="busca" type="search" placeholder="Ex.: jornalismo, filmes, rádio..." autocomplete="off" aria-label="Buscar conteúdo e serviços"><button class="voice-search" id="voiceSearch" type="button" aria-label="Pesquisar por voz" aria-pressed="false" title="Pesquisar por voz">🎙</button><small class="voice-status" id="voiceStatus" aria-live="polite"></small></div>
+    </section>
+    <section class="wrap section" id="filmes-series">
+      <div class="section-head">
+        <div><span class="eyebrow">Sob demanda</span><h2>Filmes e séries</h2></div>
+        <p>Catálogos gratuitos com filmes, séries e programação sob demanda.</p>
+      </div>
+      <div class="cards">
+        <article class="card searchable" data-search="filmes séries pluto tv canais ao vivo grátis gratuito">
+          <div class="card-top blue"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Filmes, séries e canais</div><h3>Pluto TV</h3><p>Streaming gratuito com filmes, séries e canais ao vivo. Catálogo com anúncios.</p><div class="card-bottom"><span class="provider">Plataforma oficial</span><a class="open-link" href="https://pluto.tv/" target="_blank" rel="noopener noreferrer">Abrir Pluto TV</a></div></div>
+        </article>
+        <article class="card searchable" data-search="mercado play filmes séries grátis gratuito">
+          <div class="card-top violet"><span class="poster-icon" aria-hidden="true">M</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Filmes e séries</div><h3>Mercado Play</h3><p>Entre na seção gratuita e escolha entre filmes e séries disponíveis no Brasil.</p><div class="card-bottom"><span class="provider">Catálogo oficial</span><a class="open-link" href="https://play.mercadolivre.com.br/filtrar/gratuito?origin=mplay_home" target="_blank" rel="noopener noreferrer">Ver catálogo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="plex filmes séries grátis catálogo sem mensalidade">
+          <div class="card-top teal"><span class="poster-icon" aria-hidden="true">P</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Filmes e séries</div><h3>Plex</h3><p>Filmes e séries gratuitos com anúncios. A conta é opcional para assistir.</p><div class="card-bottom"><span class="provider">Catálogo oficial</span><a class="open-link" href="https://watch.plex.tv/pt-BR/on-demand" target="_blank" rel="noopener noreferrer">Ver catálogo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="runtime filmes séries resgate oeste grátis">
+          <div class="card-top gold"><span class="poster-icon" aria-hidden="true">R</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Filmes e séries</div><h3>Runtime</h3><p>Filmes e séries gratuitos, incluindo títulos de ação, aventura e faroeste.</p><div class="card-bottom"><span class="provider">Plataforma oficial</span><a class="open-link" href="https://www.runtime.tv/pt-br/collections/destaques" target="_blank" rel="noopener noreferrer">Abrir Runtime</a></div></div>
+        </article>
+        <article class="card searchable" data-search="tv brasil play ebc séries programas documentários grátis gratuito">
+          <div class="card-top blue"><span class="poster-icon" aria-hidden="true">EBC</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Produções brasileiras</div><h3>TV Brasil Play</h3><p>Programas, séries, jornalismo e produções da comunicação pública brasileira.</p><div class="card-bottom"><span class="provider">EBC</span><a class="open-link" href="https://play.ebc.com.br/" target="_blank" rel="noopener noreferrer">Abrir TV Brasil Play</a></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="wrap section" id="faroeste">
+      <div class="section-head">
+        <div><span class="eyebrow">Especial BRAVA</span><h2>Faroeste grátis</h2></div>
+        <p>Abra coleções e filmes de western nos catálogos oficiais. A disponibilidade pode mudar.</p>
+      </div>
+      <div class="cards">
+        <article class="card searchable" data-search="faroeste western ocidental filmes series plex coleção grátis">
+          <div class="card-top orange"><span class="poster-icon" aria-hidden="true">♞</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Coleção de faroeste</div><h3>Western no Plex</h3><p>Filmes e séries do Velho Oeste em uma coleção gratuita do Plex.</p><div class="card-bottom"><span class="provider">Catálogo oficial</span><a class="open-link" href="https://watch.plex.tv/pt-BR/on-demand/category/western" target="_blank" rel="noopener noreferrer">Assistir grátis</a></div></div>
+        </article>
+        <article class="card searchable" data-search="resgate no oeste filme faroeste western runtime">
+          <div class="card-top gold"><span class="poster-icon" aria-hidden="true">✦</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Filme em destaque</div><h3>Resgate no Oeste</h3><p>Um rancheiro parte em busca da filha desaparecida. Veja a página oficial do filme.</p><div class="card-bottom"><span class="provider">Runtime</span><a class="open-link" href="https://www.runtime.tv/node/24408" target="_blank" rel="noopener noreferrer">Abrir filme</a></div></div>
+        </article>
+        <article class="card searchable" data-search="resgate no oeste mercado play filme faroeste grátis">
+          <div class="card-top orange"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Mais um caminho</div><h3>Resgate no Oeste</h3><p>Confira também a página do filme no catálogo gratuito do Mercado Play.</p><div class="card-bottom"><span class="provider">Mercado Play</span><a class="open-link" href="https://play.mercadolivre.com.br/assistir/resgate-no-oeste/a9a0ecab45bb43e6a4e542ee5f1c34af" target="_blank" rel="noopener noreferrer">Abrir filme</a></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="wrap section" id="nostalgia">
+      <div class="section-head">
+        <div><span class="eyebrow">Clássicos para rever</span><h2>Nostalgia e acervo público</h2></div>
+        <p>Reencontre filmes e séries antigas em catálogos oficiais e gratuitos.</p>
+      </div>
+      <div class="cards">
+        <article class="card searchable" data-search="domínio público acervo MEC filmes vídeos antigos clássicos sem direitos autorais">
+          <div class="card-top gold"><span class="poster-icon" aria-hidden="true">⌕</span><span class="free-badge">Acervo público</span></div>
+          <div class="card-body"><div class="card-kicker">Pesquisa de obras</div><h3>Portal Domínio Público</h3><p>Pesquise vídeos e outras obras indicadas como domínio público ou com divulgação autorizada.</p><div class="card-bottom"><span class="provider">Ministério da Educação</span><a class="open-link" href="https://dominiopublico.mec.gov.br/pesquisa/PesquisaObraForm.jsp" target="_blank" rel="noopener noreferrer">Pesquisar acervo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="mazzaropi trapalhões filmes antigos nostalgia cinema brasileiro spcine grátis">
+          <div class="card-top orange"><span class="poster-icon" aria-hidden="true">M</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Cinema brasileiro</div><h3>Mazzaropi e Trapalhões</h3><p>A Spcine Play mantém um catálogo público gratuito com filmes clássicos brasileiros. Pode pedir cadastro.</p><div class="card-bottom"><span class="provider">Spcine Play</span><a class="open-link" href="https://www.spcineplay.com.br/" target="_blank" rel="noopener noreferrer">Rever clássicos</a></div></div>
+        </article>
+        <article class="card searchable" data-search="o vigilante rodoviário série antiga clássica 1960 nostalgia TV Brasil">
+          <div class="card-top blue"><span class="poster-icon" aria-hidden="true">▶</span><span class="free-badge">Série clássica</span></div>
+          <div class="card-body"><div class="card-kicker">Televisão brasileira</div><h3>O Vigilante Rodoviário</h3><p>A série brasileira dos anos 1960: reveja episódios de Carlos e seu cão Lobo na TV Brasil.</p><div class="card-bottom"><span class="provider">TV Brasil / EBC</span><a class="open-link" href="https://tvbrasil.ebc.com.br/o-vigilante-rodoviario" target="_blank" rel="noopener noreferrer">Ver episódios</a></div></div>
+        </article>
+        <article class="card searchable" data-search="tela brasil filmes brasileiros antigos clássicos documentários grátis gov br nostalgia">
+          <div class="card-top teal"><span class="poster-icon" aria-hidden="true">BR</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Cinema e memória</div><h3>Tela Brasil</h3><p>Filmes brasileiros, clássicos e documentários em uma plataforma pública. A entrada usa conta gov.br.</p><div class="card-bottom"><span class="provider">Ministério da Cultura</span><a class="open-link" href="https://telabrasil.cultura.gov.br/" target="_blank" rel="noopener noreferrer">Abrir plataforma</a></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="wrap section" id="esporte-docs">
+      <div class="section-head">
+        <div><span class="eyebrow">Mais para explorar</span><h2>Esportes e documentários</h2></div>
+        <p>Transmissões esportivas e acervos de documentários em serviços oficiais.</p>
+      </div>
+      <div class="cards">
+        <article class="card searchable" data-search="docs brasil documentários filmes séries TV Brasil EBC">
+          <div class="card-top blue"><span class="poster-icon" aria-hidden="true">DOC</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Documentários brasileiros</div><h3>DOCs Brasil</h3><p>Documentários da TV Brasil, produções independentes e conteúdo de emissoras parceiras.</p><div class="card-bottom"><span class="provider">TV Brasil / EBC</span><a class="open-link" href="https://tvbrasil.ebc.com.br/docs-brasil" target="_blank" rel="noopener noreferrer">Explorar docs</a></div></div>
+        </article>
+        <article class="card searchable" data-search="siará mais filmes séries documentários grátis cultura ceará">
+          <div class="card-top teal"><span class="poster-icon" aria-hidden="true">CE</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Cinema e cultura</div><h3>Siará+</h3><p>Plataforma pública com filmes, séries e documentários licenciados para exibição gratuita.</p><div class="card-bottom"><span class="provider">Governo do Ceará</span><a class="open-link" href="https://siaramais.cultura.ce.gov.br/" target="_blank" rel="noopener noreferrer">Abrir catálogo</a></div></div>
+        </article>
+        <article class="card searchable" data-search="faroeste western clássico gratuito plex nostalgia">
+          <div class="card-top orange"><span class="poster-icon" aria-hidden="true">♞</span><span class="free-badge">Grátis</span></div>
+          <div class="card-body"><div class="card-kicker">Velho Oeste</div><h3>Mais faroeste no Plex</h3><p>Abra a seleção de filmes e séries western gratuitos e veja o que está disponível agora.</p><div class="card-bottom"><span class="provider">Plex</span><a class="open-link" href="https://watch.plex.tv/pt-BR/on-demand/category/western" target="_blank" rel="noopener noreferrer">Ver coleção</a></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="wrap section" id="radio">
+      <div class="section-head">
+        <div><span class="eyebrow">Som ligado</span><h2>Rádios online</h2></div>
+        <p>Ouça música, jornalismo e emissoras de várias cidades.</p>
+      </div>
+      <div class="cards">
+        <article class="card searchable" data-search="rádio mec ebc ao vivo música clássica brasileira grátis">
+          <div class="card-top teal"><span class="poster-icon" aria-hidden="true">♫</span><span class="free-badge">Ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Rádio pública</div><h3>Rádio MEC</h3><p>Ouça as emissoras MEC FM e AM ao vivo pela página oficial da EBC.</p><div class="card-bottom"><span class="provider">EBC</span><a class="open-link" href="https://radiomec.ebc.com.br/" target="_blank" rel="noopener noreferrer">Ouvir agora</a></div></div>
+        </article>
+        <article class="card searchable" data-search="radio garden rádios rádio online cidades mundo ao vivo">
+          <div class="card-top blue"><span class="poster-icon" aria-hidden="true">◎</span><span class="free-badge">Online</span></div>
+          <div class="card-body"><div class="card-kicker">Rádios pelo mapa</div><h3>Radio Garden</h3><p>Explore estações de rádio ao vivo por cidade e região.</p><div class="card-bottom"><span class="provider">Site oficial</span><a class="open-link" href="https://radio.garden/browse?hl=pt-BR" target="_blank" rel="noopener noreferrer">Explorar rádios</a></div></div>
+        </article>
+        <article class="card searchable" data-search="rádio senado ao vivo notícias jornalismo">
+          <div class="card-top violet"><span class="poster-icon" aria-hidden="true">♫</span><span class="free-badge">Ao vivo</span></div>
+          <div class="card-body"><div class="card-kicker">Rádio pública</div><h3>Rádio Senado</h3><p>Notícias, entrevistas e cobertura do Senado Federal.</p><div class="card-bottom"><span class="provider">Senado Federal</span><a class="open-link" href="https://www12.senado.leg.br/radio/" target="_blank" rel="noopener noreferrer">Ouvir agora</a></div></div>
+        </article>
+      </div>
+    </section>
+    <section class="wrap">
+      <div class="notice"><strong>Como funciona:</strong> a BRAVA TV reúne opções gratuitas e oficiais. Quando o player permite, a transmissão aparece aqui; quando não permite, o botão abre o serviço oficial. “Antigo” não significa automaticamente “domínio público”: confira a situação de cada obra no acervo indicado. Catálogos e transmissões podem mudar.</div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-row"><span><b>BRAVA TV</b> · Portal de acesso a entretenimento gratuito.</span><span>Os vídeos e áudios pertencem às plataformas e emissoras indicadas.</span></div>
+  </footer>
+  <script>
+    (function(){
+      var input=document.getElementById("busca");
+      var voiceButton=document.getElementById("voiceSearch");
+      var voiceStatus=document.getElementById("voiceStatus");
+      var cards=Array.prototype.slice.call(document.querySelectorAll(".searchable"));
+      input.addEventListener("input",function(){
+        var term=input.value.trim().toLocaleLowerCase("pt-BR");
+        cards.forEach(function(card){card.hidden=term!==""&&!(card.innerText+" "+card.getAttribute("data-search")).toLocaleLowerCase("pt-BR").includes(term);});
+        document.querySelectorAll(".section").forEach(function(section){
+          var content=section.querySelector(".cards, .watch-panel");
+          if(!content)return;
+          var hasWatch=section.querySelector(".watch-panel");
+          if(hasWatch)hasWatch.hidden=term!==""&&!(hasWatch.innerText+" "+(hasWatch.getAttribute("data-search")||"")).toLocaleLowerCase("pt-BR").includes(term);
+          var visible=section.querySelectorAll(".searchable:not([hidden])").length;
+          if(term&&visible===0&&(!hasWatch||hasWatch.hidden))section.hidden=true;
+          else section.hidden=false;
+        });
+        document.getElementById("fontes").hidden=false;
+      });
+      var SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+      if(SpeechRecognition){
+        var recognition=new SpeechRecognition();
+        var listening=false;
+        recognition.lang="pt-BR";
+        recognition.interimResults=false;
+        recognition.maxAlternatives=1;
+        recognition.onstart=function(){listening=true;voiceButton.classList.add("listening");voiceButton.setAttribute("aria-pressed","true");voiceStatus.textContent="Ouvindo… fale o que deseja buscar.";};
+        recognition.onresult=function(event){var spoken=event.results[0][0].transcript;input.value=spoken;input.dispatchEvent(new Event("input",{bubbles:true}));voiceStatus.textContent="Busca por voz: "+spoken;};
+        recognition.onerror=function(event){voiceStatus.textContent=event.error==="not-allowed"||event.error==="service-not-allowed"?"Permita o acesso ao microfone nas configurações do navegador.":"Não consegui reconhecer a fala. Tente novamente.";};
+        recognition.onend=function(){listening=false;voiceButton.classList.remove("listening");voiceButton.setAttribute("aria-pressed","false");if(voiceStatus.textContent.indexOf("Ouvindo")===0)voiceStatus.textContent="Nenhuma fala reconhecida. Tente novamente.";};
+        voiceButton.addEventListener("click",function(){if(listening){recognition.stop();return;}voiceStatus.textContent="";try{recognition.start();}catch(error){voiceStatus.textContent="A pesquisa por voz já está em andamento.";}});
+      }else{
+        voiceButton.addEventListener("click",function(){voiceStatus.textContent="A pesquisa por voz não está disponível neste navegador.";});
+      }
+    }());
+  </script>
+</body>
+</html>
+
